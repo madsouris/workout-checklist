@@ -13,6 +13,13 @@
         <h1>
           Workout here
         </h1>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              Workout one
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </section>
     </ion-content>
   </ion-page>
@@ -28,6 +35,7 @@ import {
   IonBackButton,
   IonTitle,
   IonContent,
+  IonItem, IonLabel, IonList
 } from "@ionic/vue";
 
 export default defineComponent({
@@ -39,7 +47,7 @@ export default defineComponent({
     IonButtons,
     IonBackButton,
     IonTitle,
-    IonContent,
+    IonContent, IonItem, IonLabel, IonList
   },
 });
 </script>
