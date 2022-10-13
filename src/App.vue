@@ -16,3 +16,11 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+    ion-content section.content {
+        max-width: 600px;
+        margin: 0 auto !important;
+    }
+
+</style>
