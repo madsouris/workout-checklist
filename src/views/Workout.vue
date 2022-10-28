@@ -10,13 +10,15 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <section class="content">
-        <h1>
-          Workout here
-        </h1>
+        <h1>Workout here</h1>
         <ion-list>
           <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-img src="http://placekitten.com/g/200/200"></ion-img>
+            </ion-thumbnail>
             <ion-label>
               Workout one
+              <p>x12</p>
             </ion-label>
           </ion-item>
         </ion-list>
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import {
   IonPage,
   IonHeader,
@@ -35,7 +37,11 @@ import {
   IonBackButton,
   IonTitle,
   IonContent,
-  IonItem, IonLabel, IonList
+  IonItem,
+  IonLabel,
+  IonList,
+  IonImg,
+  IonThumbnail,
 } from "@ionic/vue";
 
 export default defineComponent({
@@ -47,7 +53,18 @@ export default defineComponent({
     IonButtons,
     IonBackButton,
     IonTitle,
-    IonContent, IonItem, IonLabel, IonList
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonImg,
+    IonThumbnail,
   },
 });
 </script>
+
+<style scoped>
+ion-thumbnail ion-img {
+  border-radius: 0.5rem;
+}
+</style>
