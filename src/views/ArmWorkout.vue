@@ -13,16 +13,21 @@
                 <ion-toolbar>
                     <ion-title size="large"> Workout title </ion-title>
                 </ion-toolbar>
+                <section class="timer">
+                    00:00:00
+                    <ion-button shape="round" color="light">Start</ion-button>
+                </section>
                 <ion-list>
-                    <ion-item
-                        v-for="workout in workouts"
-                        :key="workout"
-                        class="workoutItem">
+                    <ion-list-header> Round 1 </ion-list-header>
+
+                    <ion-item v-for="workout in workouts" :key="workout">
                         <ion-thumbnail slot="start">
                             <ion-img
                                 src="http://placekitten.com/g/300"></ion-img>
                         </ion-thumbnail>
-                        <ion-label :class="{ finished: workout.status }">
+                        <ion-label
+                            class="workoutTitle"
+                            :class="{ finished: workout.status }">
                             {{ workout.name }}
                             <p>x {{ workout.amount }}</p>
                         </ion-label>
@@ -53,10 +58,12 @@ import {
     IonThumbnail,
     IonImg,
     IonCheckbox,
+    IonListHeader,
+    IonButton,
 } from '@ionic/vue'
 
 export default defineComponent({
-    name: 'WorkoutPage',
+    name: 'ArmWorkoutPage',
     components: {
         IonPage,
         IonHeader,
@@ -71,6 +78,8 @@ export default defineComponent({
         IonThumbnail,
         IonImg,
         IonCheckbox,
+        IonListHeader,
+        IonButton,
     },
     data() {
         return {
@@ -149,8 +158,6 @@ ion-thumbnail ion-img {
 
 .content ion-toolbar {
     --background: transparent;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
 }
 
 .finished {
@@ -158,7 +165,44 @@ ion-thumbnail ion-img {
     text-decoration: line-through;
     text-decoration-color: var(--ion-color-primary);
 }
-.line-normal {
-    text-decoration: initial;
+
+.workoutTitle {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.timer {
+    width: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(223deg, #1a2857, #400936, #0c4009);
+    background-size: 180% 180%;
+    animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .timer {
+        border-radius: 0.5rem;
+    }
 }
 </style>

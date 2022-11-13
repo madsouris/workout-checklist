@@ -15,7 +15,7 @@
                 </section>
                 <section>
                     <ion-list>
-                        <ion-item button router-link="/workout">
+                        <ion-item button router-link="/arm">
                             <ion-icon
                                 :icon="bodyOutline"
                                 slot="start"
