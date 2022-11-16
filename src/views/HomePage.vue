@@ -1,6 +1,18 @@
 <template>
     <ion-page>
+        <ion-header :translucent="true">
+            <ion-toolbar>
+                <ion-title>Welcome</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
         <ion-content :fullscreen="true">
+            <ion-header collapse="condense">
+                <ion-toolbar>
+                    <ion-title size="large"> Welcome back dude </ion-title>
+                </ion-toolbar>
+            </ion-header>
+
             <section class="content">
                 <section class="ion-text-center ion-padding">
                     <ion-img src="assets/img/Banner.svg"></ion-img>
@@ -26,6 +38,16 @@
                             </ion-label>
                         </ion-item>
                     </ion-list>
+                    <ion-item button router-link="/body">
+                        <ion-icon
+                            :icon="shirtOutline"
+                            slot="start"
+                            color="primary"></ion-icon>
+                        <ion-label>
+                            Chest & body focus
+                            <p>With more workouts to balanace</p>
+                        </ion-label>
+                    </ion-item>
                 </section>
             </section>
         </ion-content>
@@ -34,6 +56,9 @@
 
 <script lang="ts">
 import {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
     IonContent,
     IonPage,
     IonImg,
@@ -43,7 +68,7 @@ import {
     IonLabel,
     IonIcon,
 } from '@ionic/vue'
-import { bodyOutline } from 'ionicons/icons'
+import { bodyOutline, shirtOutline } from 'ionicons/icons'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -57,10 +82,14 @@ export default defineComponent({
         IonItem,
         IonLabel,
         IonIcon,
+        IonHeader,
+        IonToolbar,
+        IonTitle,
     },
     setup() {
         return {
             bodyOutline,
+            shirtOutline,
         }
     },
 })

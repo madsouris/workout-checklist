@@ -5,7 +5,7 @@
                 <ion-buttons slot="start">
                     <ion-back-button></ion-back-button>
                 </ion-buttons>
-                <ion-title>Arms Workout</ion-title>
+                <ion-title>Body Workout</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -107,7 +107,7 @@ import {
 } from '@ionic/vue'
 
 export default defineComponent({
-    name: 'ArmWorkoutPage',
+    name: 'BodyWorkoutPage',
     components: {
         IonPage,
         IonHeader,
@@ -133,109 +133,99 @@ export default defineComponent({
                 round1: {
                     1: {
                         amount: 15,
-                        name: 'Side Raise',
+                        name: 'Chest opening with dumbbells',
                         status: false,
                     },
                     2: {
                         amount: 15,
-                        name: 'Incine Row',
+                        name: 'Bench press with dumbbells',
                         status: false,
                     },
                     3: {
                         amount: 15,
-                        name: 'triceps kickback',
+                        name: 'Lats pull over with dumbbells',
                         status: false,
                     },
                     4: {
                         amount: 15,
-                        name: 'shoulder press',
+                        name: 'Dumbbells fly',
                         status: false,
                     },
                     5: {
                         amount: 15,
-                        name: 'triceps extension',
+                        name: 'Reverse grip dumbbells press',
                         status: false,
                     },
                     6: {
-                        amount: 15,
-                        name: 'shoulder shrugs',
+                        amount: 10,
+                        name: 'Close grip dumbbells press heavy',
                         status: false,
                     },
                     7: {
-                        amount: 15,
-                        name: 'hammer curl',
+                        amount: 10,
+                        name: 'Close grip dumbbells press lighter',
                         status: false,
                     },
                     8: {
-                        amount: 15,
-                        name: 'upright tows',
+                        amount: 10,
+                        name: 'Single arm row left',
                         status: false,
                     },
                     9: {
-                        amount: 15,
-                        name: 'biceps curl',
+                        amount: 10,
+                        name: 'Single arm row right',
                         status: false,
                     },
                     10: {
-                        amount: 15,
-                        name: 'wrist curl',
+                        amount: 1,
+                        name: 'Squats with 10kg dumbbell x20',
                         status: false,
                     },
                     11: {
-                        amount: 20,
-                        name: 'squats with dumbbells',
-                        status: false,
-                    },
-                    12: {
                         amount: 1,
-                        name: 'Boxer bounce 3mn',
+                        name: 'Boxing bounce 3mn',
                         status: false,
                     },
                 },
                 round2: {
-                    1: {
+                    2: {
                         amount: 10,
-                        name: 'Side Raise',
+                        name: 'Bench press with dumbbells',
                         status: false,
                     },
-                    4: {
+                    3: {
                         amount: 10,
-                        name: 'shoulder press',
+                        name: 'Lats pull over with dumbbells',
                         status: false,
                     },
                     5: {
-                        amount: 15,
-                        name: 'triceps extension',
-                        status: false,
-                    },
-                    6: {
-                        amount: 15,
-                        name: 'shoulder shrugs',
+                        amount: 10,
+                        name: 'Reverse grip dumbbells press',
                         status: false,
                     },
                     7: {
                         amount: 10,
-                        name: 'hammer curl',
-                        status: false,
-                    },
-                    9: {
-                        amount: 10,
-                        name: 'biceps curl',
-                        status: false,
-                    },
-                    10: {
-                        amount: 15,
-                        name: 'wrist curl',
-                        status: false,
-                    },
-                    11: {
-                        amount: 20,
-                        name: 'squats with dumbbells',
+                        name: 'Close grip dumbbells press lighter',
                         status: false,
                     },
                     12: {
+                        amount: 10,
+                        name: 'Front chest lift right',
+                        status: false,
+                    },
+                    13: {
+                        amount: 10,
+                        name: 'Front chest lift left',
+                        status: false,
+                    },
+                    10: {
                         amount: 1,
-                        name: 'Boxer bounce 3mn',
+                        name: 'Squats with 10kg dumbbell x20',
+                        status: false,
+                    },
+                    11: {
+                        amount: 1,
+                        name: 'Boxing bounce 3mn',
                         status: false,
                     },
                 },
