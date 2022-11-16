@@ -142,8 +142,8 @@ export default defineComponent({
 
 @media screen and (max-width: 500px) {
     .workout-card {
-        width: 300px;
-        height: 500px;
+        width: 280px;
+        height: 450px;
     }
 }
 </style>
