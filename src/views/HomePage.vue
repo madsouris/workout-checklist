@@ -2,52 +2,50 @@
     <ion-page>
         <ion-header :translucent="true">
             <ion-toolbar>
-                <ion-title>Welcome</ion-title>
+                <ion-title>Workout checklist</ion-title>
             </ion-toolbar>
         </ion-header>
 
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large"> Welcome back dude </ion-title>
-                </ion-toolbar>
-            </ion-header>
-
-            <section class="content">
+            <section class="content ion-text-center">
+                <ion-text class="ion-margin-top">
+                    <h1>Welcome back dude</h1>
+                </ion-text>
+                <ion-text color="medium">
+                    <p class="ion-no-margin">
+                        What are planning to work on today?
+                    </p>
+                </ion-text>
                 <section class="ion-text-center ion-padding">
-                    <ion-img src="assets/img/Banner.svg"></ion-img>
-                    <ion-text>
-                        <h1>Workout</h1>
-                    </ion-text>
-                    <ion-text color="secondary">
-                        <p class="ion-no-margin">
-                            What are planning to work on today?
-                        </p>
-                    </ion-text>
-                </section>
-                <section>
-                    <ion-list>
-                        <ion-item button router-link="/arm">
-                            <ion-icon
-                                :icon="bodyOutline"
-                                slot="start"
-                                color="primary"></ion-icon>
-                            <ion-label>
-                                Arms & shoulders focus
-                                <p>With more workouts to balanace</p>
-                            </ion-label>
-                        </ion-item>
-                    </ion-list>
-                    <ion-item button router-link="/body">
-                        <ion-icon
-                            :icon="shirtOutline"
-                            slot="start"
-                            color="primary"></ion-icon>
-                        <ion-label>
-                            Chest & body focus
-                            <p>With more workouts to balanace</p>
-                        </ion-label>
-                    </ion-item>
+                    <swiper
+                        :slides-per-view="1"
+                        :pagination="true"
+                        :modules="modules">
+                        <swiper-slide class="card-wrapper">
+                            <div class="workout-card arm">
+                                <h1>Arms and shoulders focus</h1>
+                                <p>With more workouts to balance</p>
+                            </div>
+                            <ion-button
+                                shape="round"
+                                router-link="/arm"
+                                size="large">
+                                Let's go
+                            </ion-button>
+                        </swiper-slide>
+                        <swiper-slide class="card-wrapper">
+                            <div class="workout-card body">
+                                <h1>Chest & body focus</h1>
+                                <p>With more workouts to balance</p>
+                            </div>
+                            <ion-button
+                                shape="round"
+                                router-link="/body"
+                                size="large">
+                                Let's go
+                            </ion-button>
+                        </swiper-slide>
+                    </swiper>
                 </section>
             </section>
         </ion-content>
@@ -61,36 +59,91 @@ import {
     IonTitle,
     IonContent,
     IonPage,
-    IonImg,
     IonText,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonIcon,
+    IonButton,
 } from '@ionic/vue'
 import { bodyOutline, shirtOutline } from 'ionicons/icons'
 import { defineComponent } from 'vue'
+
+import { Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 export default defineComponent({
     name: 'HomePage',
     components: {
         IonContent,
         IonPage,
-        IonImg,
         IonText,
-        IonList,
-        IonItem,
-        IonLabel,
-        IonIcon,
         IonHeader,
         IonToolbar,
         IonTitle,
+        Swiper,
+        SwiperSlide,
+        IonButton,
     },
     setup() {
         return {
             bodyOutline,
             shirtOutline,
+            modules: [Pagination],
         }
     },
 })
 </script>
+
+<style scoped>
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+.workout-card {
+    width: 500px;
+    height: 600px;
+
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
+    transform: rotate(1deg);
+    cursor: grab;
+}
+
+.arm {
+    background: url('../../public/assets/img/arm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.body {
+    background: url('../../public/assets/img/body.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.workout-card h1,
+.workout-card p {
+    color: white;
+    margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+    .workout-card {
+        width: 300px;
+        height: 500px;
+    }
+}
+</style>

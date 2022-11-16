@@ -11,7 +11,7 @@
         <ion-content :fullscreen="true">
             <ion-header collapse="condense">
                 <ion-toolbar>
-                    <ion-title size="large"> Workout title </ion-title>
+                    <ion-title size="large"> Chest & body focus </ion-title>
                 </ion-toolbar>
             </ion-header>
             <StopWatch />
