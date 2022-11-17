@@ -6,14 +6,13 @@
             <span>{{ stopwatch.seconds }} </span>
         </p>
         <div>
-            <ion-button shape="round" color="light" @click="stopwatch.start()">
-                <ion-icon :icon="play" slot="start"></ion-icon>
-                Start
+            <ion-button shape="round" @click="stopwatch.start()" fill="solid" color="primary">
+                <ion-icon :icon="play" slot="icon-only"></ion-icon>
             </ion-button>
-            <ion-button color="light" fill="clear" @click="stopwatch.pause()">
+            <ion-button shape="round" fill="clear" @click="stopwatch.pause()">
                 <ion-icon slot="icon-only" :icon="pause"></ion-icon>
             </ion-button>
-            <ion-button color="light" fill="clear" @click="stopwatch.reset()">
+            <ion-button shape="round" fill="clear" @click="stopwatch.reset()">
                 <ion-icon :icon="reload" slot="icon-only"></ion-icon>
             </ion-button>
         </div>
@@ -30,6 +29,11 @@ stopwatch.pause()
 </script>
 
 <style scoped>
+ion-button {
+    --background: transparent;
+    --color: white;
+}
+
 .timer {
     width: 100%;
     padding: 2rem 1rem;
@@ -59,9 +63,11 @@ stopwatch.pause()
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
