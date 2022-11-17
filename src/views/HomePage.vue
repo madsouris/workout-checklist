@@ -4,10 +4,14 @@
             <ion-toolbar>
                 <ion-title>Workout checklist</ion-title>
                 <ion-buttons slot="primary">
-                    <ion-button color="dark" @click="goTo('https://github.com/madsouris/workout-checklist')">
-                        <ion-icon :icon="logoGithub">
-
-                        </ion-icon>
+                    <ion-button
+                        color="dark"
+                        @click="
+                            goTo(
+                                'https://github.com/madsouris/workout-checklist'
+                            )
+                        ">
+                        <ion-icon :icon="logoGithub"> </ion-icon>
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
@@ -20,17 +24,23 @@
                 </ion-text>
                 <ion-text color="medium">
                     <p class="ion-no-margin">
-                        What are planning to work on today?
+                        What are you planning to work on today?
                     </p>
                 </ion-text>
                 <section class="ion-text-center ion-padding">
-                    <swiper :slides-per-view="1" :pagination="true" :modules="modules">
+                    <swiper
+                        :slides-per-view="1"
+                        :pagination="true"
+                        :modules="modules">
                         <swiper-slide class="card-wrapper">
                             <div class="workout-card arm">
                                 <h1>Arms and shoulders focus</h1>
                                 <p>With more workouts to balance</p>
                             </div>
-                            <ion-button shape="round" router-link="/arm" size="large">
+                            <ion-button
+                                shape="round"
+                                router-link="/arm"
+                                size="large">
                                 Let's go
                             </ion-button>
                         </swiper-slide>
@@ -39,14 +49,19 @@
                                 <h1>Chest & body focus</h1>
                                 <p>With more workouts to balance</p>
                             </div>
-                            <ion-button shape="round" router-link="/body" size="large">
+                            <ion-button
+                                shape="round"
+                                router-link="/body"
+                                size="large">
                                 Let's go
                             </ion-button>
                         </swiper-slide>
                     </swiper>
                 </section>
                 <ion-button fill="clear" shape="round" router-link="/about">
-                    <ion-icon :icon="informationCircleOutline" slot="start"></ion-icon>
+                    <ion-icon
+                        :icon="informationCircleOutline"
+                        slot="start"></ion-icon>
                     About
                 </ion-button>
             </section>
@@ -62,7 +77,9 @@ import {
     IonContent,
     IonPage,
     IonText,
-    IonButton, IonIcon, IonButtons,
+    IonButton,
+    IonIcon,
+    IonButtons,
 } from '@ionic/vue'
 import { informationCircleOutline, logoGithub } from 'ionicons/icons'
 import { defineComponent } from 'vue'
@@ -83,19 +100,22 @@ export default defineComponent({
         IonTitle,
         Swiper,
         SwiperSlide,
-        IonButton, IonIcon, IonButtons
+        IonButton,
+        IonIcon,
+        IonButtons,
     },
     setup() {
         return {
-            informationCircleOutline, logoGithub,
+            informationCircleOutline,
+            logoGithub,
             modules: [Pagination],
         }
     },
     methods: {
         goTo(link: string) {
-            window.open(link);
-        }
-    }
+            window.open(link)
+        },
+    },
 })
 </script>
 
