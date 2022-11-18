@@ -1,0 +1,159 @@
+{
+    "arm": [
+        {
+            "round1": [
+                {
+                    "id": 1,
+                    "name": "side raise",
+                    "url": "https://www.youtube.com/watch?v=K5hFLVJnnsw",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 2,
+                    "name": "incline row",
+                    "url": "https://www.youtube.com/watch?v=2LxN3_3atps",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "triceps kickback",
+                    "url": "https://www.youtube.com/watch?v=z3sm6YgpJho",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 4,
+                    "name": "shoulders press",
+                    "url": "https://www.youtube.com/watch?v=flpBXsHSVDk",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 5,
+                    "name": "triceps extension",
+                    "url": "https://www.youtube.com/watch?v=_gsUck-7M74",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 6,
+                    "name": "shoulders shrug",
+                    "url": "https://www.youtube.com/watch?v=8lP_eJvClSA",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 7,
+                    "name": "hammer curl",
+                    "url": "https://www.youtube.com/watch?v=TwD-YGVP4Bk",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 8,
+                    "name": "upright tows",
+                    "url": "https://www.youtube.com/watch?v=Cw2MS1byZBs",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 9,
+                    "name": "biceps curl",
+                    "url": "https://www.youtube.com/watch?v=b4jOP-spQW8",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 10,
+                    "name": "wrists curl",
+                    "url": "https://www.youtube.com/watch?v=7ac_qmBjkFI",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 11,
+                    "name": "squats with dumbbells",
+                    "url": "https://www.youtube.com/watch?v=Xjo_fY9Hl9w",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 12,
+                    "name": "boxer bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "round2": [
+                {
+                    "id": 1,
+                    "name": "side raise",
+                    "url": "https://www.youtube.com/watch?v=K5hFLVJnnsw",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 4,
+                    "name": "shoulders press",
+                    "url": "https://www.youtube.com/watch?v=flpBXsHSVDk",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 5,
+                    "name": "triceps extension",
+                    "url": "https://www.youtube.com/watch?v=_gsUck-7M74",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 6,
+                    "name": "shoulders shrug",
+                    "url": "https://www.youtube.com/watch?v=8lP_eJvClSA",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 7,
+                    "name": "hammer curl",
+                    "url": "https://www.youtube.com/watch?v=TwD-YGVP4Bk",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 9,
+                    "name": "biceps curl",
+                    "url": "https://www.youtube.com/watch?v=b4jOP-spQW8",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 10,
+                    "name": "wrists curl",
+                    "url": "https://www.youtube.com/watch?v=7ac_qmBjkFI",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 11,
+                    "name": "squats with dumbbells",
+                    "url": "https://www.youtube.com/watch?v=Xjo_fY9Hl9w",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 12,
+                    "name": "boxer bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                }
+            ]
+        }
+    ]
+}
