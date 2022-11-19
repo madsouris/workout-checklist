@@ -155,5 +155,141 @@
                 }
             ]
         }
+    ],
+    "body": [
+        {
+            "round1": [
+                {
+                    "id": 1,
+                    "name": "chest opening",
+                    "url": "https://www.youtube.com/watch?v=u7AFpzWV2I8&t=105s",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 2,
+                    "name": "bench press",
+                    "url": "https://www.youtube.com/watch?v=ZOwwBk642SI",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "lats pull over",
+                    "url": "https://www.youtube.com/watch?v=37SatipELQg",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 4,
+                    "name": "dumbbells fly",
+                    "url": "https://www.youtube.com/watch?v=ajdFwa-qM98",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 5,
+                    "name": "palm in bench press",
+                    "url": "https://www.youtube.com/watch?v=rR44yV2m9G8",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 6,
+                    "name": "close grip dumbbells press (Heavy)",
+                    "url": "https://www.youtube.com/watch?v=zZX5AGyg3VQ",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 7,
+                    "name": "close grip dumbbells press (light)",
+                    "url": "https://www.youtube.com/watch?v=zZX5AGyg3VQ",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 8,
+                    "name": "single arm row (left)",
+                    "url": "https://www.youtube.com/watch?v=-koP10y1qZI",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 9,
+                    "name": "single arm row (right)",
+                    "url": "https://www.youtube.com/watch?v=-koP10y1qZI",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 10,
+                    "name": "Squats with 10kg dumbbell x20",
+                    "url": "https://www.youtube.com/watch?v=Xjo_fY9Hl9w",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 11,
+                    "name": "Boxing bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                }
+            ]
+        },
+        {
+            "round2": [
+                {
+                    "id": 2,
+                    "name": "bench press",
+                    "url": "https://www.youtube.com/watch?v=ZOwwBk642SI",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "lats pull over",
+                    "url": "https://www.youtube.com/watch?v=37SatipELQg",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 5,
+                    "name": "palm in bench press",
+                    "url": "https://www.youtube.com/watch?v=rR44yV2m9G8",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 7,
+                    "name": "close grip dumbbells press (light)",
+                    "url": "https://www.youtube.com/watch?v=zZX5AGyg3VQ",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 12,
+                    "name": "Incline Front Raise",
+                    "url": "https://www.youtube.com/watch?v=0_b43RbenY8",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 10,
+                    "name": "Squats with 10kg dumbbell x20",
+                    "url": "https://www.youtube.com/watch?v=Xjo_fY9Hl9w",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 11,
+                    "name": "Boxing bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                }
+            ]
+        }
     ]
 }

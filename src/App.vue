@@ -18,6 +18,9 @@ export default defineComponent({
 </script>
 
 <style>
+ion-toolbar {
+    --border-color: transparent;
+}
 ion-content section.content {
     max-width: 850px;
     margin: 0 auto !important;

@@ -11,7 +11,7 @@
         <ion-content :fullscreen="true">
             <ion-header collapse="condense">
                 <ion-toolbar>
-                    <ion-title size="large"> Chest & body focus </ion-title>
+                    <ion-title size="large"> Chest & body </ion-title>
                 </ion-toolbar>
             </ion-header>
             <StopWatch />
@@ -21,18 +21,26 @@
                         Hint: tap on the thumbnail to see tutorials
                     </p>
                 </ion-text>
-                <ion-accordion-group :value="['first', 'second']">
+                <ion-accordion-group
+                    :value="['first', 'second']"
+                    class="ion-margin-bottom">
                     <ion-accordion value="first">
                         <ion-item slot="header">
                             <ion-label>Round 1</ion-label>
                         </ion-item>
                         <ion-list slot="content">
                             <ion-item
-                                v-for="workout in workouts.round1"
-                                :key="workout">
-                                <ion-thumbnail slot="start">
+                                v-for="workout in workouts.body[0].round1"
+                                :key="workout.id">
+                                <ion-thumbnail
+                                    slot="start"
+                                    @click="goTo(workout.url)">
                                     <ion-img
-                                        src="http://placekitten.com/g/300"></ion-img>
+                                        :src="
+                                            '/assets/img/body/' +
+                                            workout.id +
+                                            '.jpg'
+                                        "></ion-img>
                                 </ion-thumbnail>
                                 <ion-label
                                     class="workoutTitle"
@@ -56,11 +64,17 @@
                         </ion-item>
                         <ion-list slot="content">
                             <ion-item
-                                v-for="workout in workouts.round2"
-                                :key="workout">
-                                <ion-thumbnail slot="start">
+                                v-for="workout in workouts.body[1].round2"
+                                :key="workout.id">
+                                <ion-thumbnail
+                                    slot="start"
+                                    @click="goTo(workout.url)">
                                     <ion-img
-                                        src="http://placekitten.com/g/300"></ion-img>
+                                        :src="
+                                            '/assets/img/body/' +
+                                            workout.id +
+                                            '.jpg'
+                                        "></ion-img>
                                 </ion-thumbnail>
                                 <ion-label
                                     class="workoutTitle"
@@ -106,6 +120,8 @@ import {
     IonAccordion,
 } from '@ionic/vue'
 
+import workouts from '../data.json'
+
 export default defineComponent({
     name: 'BodyWorkoutPage',
     components: {
@@ -129,112 +145,12 @@ export default defineComponent({
     },
     data() {
         return {
-            workouts: {
-                round1: {
-                    1: {
-                        amount: 15,
-                        name: 'Chest opening with dumbbells',
-                        status: false,
-                    },
-                    2: {
-                        amount: 15,
-                        name: 'Bench press with dumbbells',
-                        status: false,
-                    },
-                    3: {
-                        amount: 15,
-                        name: 'Lats pull over with dumbbells',
-                        status: false,
-                    },
-                    4: {
-                        amount: 15,
-                        name: 'Dumbbells fly',
-                        status: false,
-                    },
-                    5: {
-                        amount: 15,
-                        name: 'Reverse grip dumbbells press',
-                        status: false,
-                    },
-                    6: {
-                        amount: 10,
-                        name: 'Close grip dumbbells press heavy',
-                        status: false,
-                    },
-                    7: {
-                        amount: 10,
-                        name: 'Close grip dumbbells press lighter',
-                        status: false,
-                    },
-                    8: {
-                        amount: 10,
-                        name: 'Single arm row left',
-                        status: false,
-                    },
-                    9: {
-                        amount: 10,
-                        name: 'Single arm row right',
-                        status: false,
-                    },
-                    10: {
-                        amount: 1,
-                        name: 'Squats with 10kg dumbbell x20',
-                        status: false,
-                    },
-                    11: {
-                        amount: 1,
-                        name: 'Boxing bounce 3mn',
-                        status: false,
-                    },
-                },
-                round2: {
-                    2: {
-                        amount: 10,
-                        name: 'Bench press with dumbbells',
-                        status: false,
-                    },
-                    3: {
-                        amount: 10,
-                        name: 'Lats pull over with dumbbells',
-                        status: false,
-                    },
-                    5: {
-                        amount: 10,
-                        name: 'Reverse grip dumbbells press',
-                        status: false,
-                    },
-                    7: {
-                        amount: 10,
-                        name: 'Close grip dumbbells press lighter',
-                        status: false,
-                    },
-                    12: {
-                        amount: 10,
-                        name: 'Front chest lift right',
-                        status: false,
-                    },
-                    13: {
-                        amount: 10,
-                        name: 'Front chest lift left',
-                        status: false,
-                    },
-                    10: {
-                        amount: 1,
-                        name: 'Squats with 10kg dumbbell x20',
-                        status: false,
-                    },
-                    11: {
-                        amount: 1,
-                        name: 'Boxing bounce 3mn',
-                        status: false,
-                    },
-                },
-            },
+            workouts: workouts,
         }
     },
     methods: {
-        startTimer() {
-            console.log('started')
+        goTo(link: string) {
+            window.open(link)
         },
     },
 })

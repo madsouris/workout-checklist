@@ -6,26 +6,50 @@
             <span>{{ stopwatch.seconds }} </span>
         </p>
         <div>
-            <ion-button shape="round" @click="stopwatch.start()" fill="solid" color="primary">
+            <ion-button
+                shape="round"
+                @click="stopwatch.start()"
+                fill="solid"
+                color="primary">
                 <ion-icon :icon="play" slot="icon-only"></ion-icon>
             </ion-button>
-            <ion-button shape="round" fill="clear" @click="stopwatch.pause()">
+            <ion-button shape="round" fill="clear" @click="pauseTimer">
                 <ion-icon slot="icon-only" :icon="pause"></ion-icon>
             </ion-button>
-            <ion-button shape="round" fill="clear" @click="stopwatch.reset()">
-                <ion-icon :icon="reload" slot="icon-only"></ion-icon>
+            <ion-button shape="round" fill="clear" @click="setOpen(true)">
+                <ion-icon :icon="stop" slot="icon-only"></ion-icon>
             </ion-button>
+            <ion-alert
+                :is-open="isOpenRef"
+                header="Finish"
+                sub-header="You can do more you know?"
+                message="Congratulations by the way!"
+                :buttons="['Finish']"
+                @didDismiss="setOpen(false), backHome()"></ion-alert>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
-import { IonButton, IonIcon } from '@ionic/vue'
-import { play, pause, reload } from 'ionicons/icons'
+import { ref } from 'vue'
+import { IonButton, IonIcon, IonAlert } from '@ionic/vue'
+import { play, pause, stop } from 'ionicons/icons'
 import { useStopwatch } from 'vue-timer-hook'
-const autoStart = false
-const stopwatch = useStopwatch(autoStart)
-stopwatch.pause()
+
+const stopwatch = useStopwatch(0, false)
+
+const isOpenRef = ref(false)
+const setOpen = (state: boolean) => (isOpenRef.value = state)
+
+function pauseTimer() {
+    stopwatch.pause()
+}
+
+function backHome() {
+    stopwatch.reset(0, false)
+    const url = new URL('/', window.location.origin)
+    window.location.href = url.toString()
+}
 </script>
 
 <style scoped>

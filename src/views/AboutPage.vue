@@ -22,8 +22,8 @@
                     <p>
                         This app was created for personal workout routines by
                         me,
-                        <a href="//github.com/madsouris" target="blank"
-                            >@madsouris</a
+                        <a href="//github.com/madsouris" target="blank">
+                            @madsouris </a
                         >. This is still an early development, as I am still
                         learning Javascript, Vue and Ionic framework.
                     </p>
