@@ -73,6 +73,7 @@
                 <ion-button
                     color="dark"
                     shape="round"
+                    fill="clear"
                     @click="goTo('https://instagram.com/madsouris')">
                     <ion-icon :icon="logoInstagram" slot="start"></ion-icon>
                     Instagram
@@ -80,6 +81,7 @@
                 <ion-button
                     shape="round"
                     color="dark"
+                    fill="clear"
                     @click="goTo('https://twitter.com/madsouris')">
                     <ion-icon :icon="logoTwitter" slot="start"></ion-icon>
                     Twitter
@@ -87,6 +89,7 @@
                 <ion-button
                     fill="clear"
                     color="dark"
+                    shape="round"
                     @click="goTo('https://vannrith.com')">
                     <ion-icon :icon="globeOutline" slot="start"></ion-icon>
                     Website
