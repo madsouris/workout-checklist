@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header :translucent="true">
             <ion-toolbar>
-                <ion-title>Workout checklist</ion-title>
+                <ion-title>{{ data.app.app.name }}</ion-title>
                 <ion-buttons slot="primary">
                     <ion-button
                         color="dark"
@@ -24,7 +24,12 @@
                 </ion-text>
                 <ion-text color="medium">
                     <p class="ion-no-margin">
-                        What are you planning to work on today?
+                        What are you planning to work on today? <br />
+                        {{ data.msg }} <br />
+                        {{ data.pine }}
+                        <ion-button @click="data.addPine">
+                            More pine
+                        </ion-button>
                     </p>
                 </ion-text>
                 <section class="ion-text-center ion-padding">
@@ -89,6 +94,9 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+// add data from pinia
+import { dataStore } from '@/store/data'
+
 export default defineComponent({
     name: 'HomePage',
     components: {
@@ -105,10 +113,12 @@ export default defineComponent({
         IonButtons,
     },
     setup() {
+        const data = dataStore()
         return {
             informationCircleOutline,
             logoGithub,
             modules: [Pagination],
+            data,
         }
     },
     methods: {

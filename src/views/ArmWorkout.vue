@@ -19,6 +19,8 @@
                 <ion-text color="medium">
                     <p class="ion-padding ion-no-margin">
                         Hint: tap on the thumbnail to see tutorials
+                        <br />
+                        {{ store.app.app.name }} has {{ store.pine }}
                     </p>
                 </ion-text>
                 <ion-accordion-group
@@ -123,6 +125,9 @@ import {
 //import JSON data
 import workouts from '../data.json'
 
+// add data from pinia
+import { dataStore } from '@/store/data'
+
 export default defineComponent({
     name: 'ArmWorkoutPage',
     components: {
@@ -143,6 +148,12 @@ export default defineComponent({
         IonText,
         IonAccordionGroup,
         IonAccordion,
+    },
+    setup() {
+        const store = dataStore()
+        return {
+            store,
+        }
     },
     data() {
         return {
