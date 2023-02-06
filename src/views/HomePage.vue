@@ -89,6 +89,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+
 export default defineComponent({
     name: 'HomePage',
     components: {
@@ -105,6 +106,7 @@ export default defineComponent({
         IonButtons,
     },
     setup() {
+
         return {
             informationCircleOutline,
             logoGithub,
