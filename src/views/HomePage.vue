@@ -2,15 +2,10 @@
     <ion-page>
         <ion-header :translucent="true">
             <ion-toolbar>
-                <ion-title>Workout checklist</ion-title>
+                <ion-title>{{ data.workout.app.name }}</ion-title>
                 <ion-buttons slot="primary">
-                    <ion-button
-                        color="dark"
-                        @click="
-                            goTo(
-                                'https://github.com/madsouris/workout-checklist'
-                            )
-                        ">
+                    <ion-button color="dark" @click="
+                    goTo(data.workout.app.repo)">
                         <ion-icon :icon="logoGithub"> </ion-icon>
                     </ion-button>
                 </ion-buttons>
@@ -28,19 +23,13 @@
                     </p>
                 </ion-text>
                 <section class="ion-text-center ion-padding">
-                    <swiper
-                        :slides-per-view="1"
-                        :pagination="true"
-                        :modules="modules">
+                    <swiper :slides-per-view="1" :pagination="true" :modules="modules">
                         <swiper-slide class="card-wrapper">
                             <div class="workout-card arm">
                                 <h1>Arms and shoulders focus</h1>
                                 <p>With more workouts to balance</p>
                             </div>
-                            <ion-button
-                                shape="round"
-                                router-link="/arm"
-                                size="large">
+                            <ion-button shape="round" router-link="/arm" size="large">
                                 Let's go
                             </ion-button>
                         </swiper-slide>
@@ -49,19 +38,14 @@
                                 <h1>Chest & body focus</h1>
                                 <p>With more workouts to balance</p>
                             </div>
-                            <ion-button
-                                shape="round"
-                                router-link="/body"
-                                size="large">
+                            <ion-button shape="round" router-link="/body" size="large">
                                 Let's go
                             </ion-button>
                         </swiper-slide>
                     </swiper>
                 </section>
                 <ion-button fill="clear" shape="round" router-link="/about">
-                    <ion-icon
-                        :icon="informationCircleOutline"
-                        slot="start"></ion-icon>
+                    <ion-icon :icon="informationCircleOutline" slot="start"></ion-icon>
                     About
                 </ion-button>
             </section>
@@ -89,6 +73,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+import { useDataStore } from '@/stores/data'
 
 export default defineComponent({
     name: 'HomePage',
@@ -106,11 +91,12 @@ export default defineComponent({
         IonButtons,
     },
     setup() {
-
+        const data: any = useDataStore()
         return {
             informationCircleOutline,
             logoGithub,
             modules: [Pagination],
+            data
         }
     },
     methods: {
