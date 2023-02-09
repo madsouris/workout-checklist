@@ -5,17 +5,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('@/views/HomePage.vue')
-    },
-    {
-        path: '/arm',
-        name: 'Arm Workout',
-        component: () => import('@/views/ArmWorkout.vue'),
-    },
-    {
-        path: '/body',
-        name: 'Body Workout',
-        component: () => import('@/views/BodyWorkout.vue'),
+        component: () => import('@/views/HomePage.vue'),
     },
     {
         path: '/about',
@@ -23,10 +13,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/AboutPage.vue'),
     },
     {
+        path: '/workout',
+        redirect: '/',
+    },
+    {
         path: '/workout/:id',
         name: 'Workout',
-        component: () => import('@/views/WorkoutPage.vue')
-    }
+        component: () => import('@/views/WorkoutPage.vue'),
+    },
 ]
 
 const router = createRouter({

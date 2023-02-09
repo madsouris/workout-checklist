@@ -24,84 +24,113 @@
                     </p>
                 </ion-text>
 
-                <ion-accordion-group
-                    :value="['first', 'second']"
-                    class="ion-margin-bottom"
+                <ion-accordion-group :value="['round1', 'round2']" class="ion-margin-bottom"
                     v-if="$route.params.id == 'arm'">
-                    <ion-accordion value="first">
+                    <ion-accordion value="round1">
                         <ion-item slot="header">
                             <ion-label>Round 1</ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item
-                                v-for="workout in data.workout.workout.arm
-                                    .round1"
-                                :key="workout.id">
-                                <ion-thumbnail
-                                    slot="start"
-                                    @click="goTo(workout.url)">
-                                    <ion-img
-                                        :src="
-                                            '/assets/img/arm/' +
-                                            workout.id +
-                                            '.jpg'
-                                        "></ion-img>
+                            <ion-item v-for="workout in data.workout.workout.arm.round1" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/arm/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
                                 </ion-thumbnail>
-                                <ion-label
-                                    class="workoutTitle"
-                                    :class="{ finished: workout.status }">
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
                                     {{ workout.name }}
                                     <p>x {{ workout.amount }}</p>
                                 </ion-label>
 
-                                <ion-checkbox
-                                    @ionChange="
-                                        workout.status = !workout.status
-                                    "
-                                    slot="end"
-                                    :checked="workout.status"></ion-checkbox>
+                                <ion-checkbox @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
                             </ion-item>
                         </ion-list>
                     </ion-accordion>
-                    <ion-accordion value="second">
+                    <ion-accordion value="round2">
                         <ion-item slot="header">
                             <ion-label>Round 2</ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item
-                                v-for="workout in data.workout.workout.arm
-                                    .round2"
-                                :key="workout.id">
-                                <ion-thumbnail
-                                    slot="start"
-                                    @click="goTo(workout.url)">
-                                    <ion-img
-                                        :src="
-                                            '/assets/img/arm/' +
-                                            workout.id +
-                                            '.jpg'
-                                        "></ion-img>
+                            <ion-item v-for="workout in data.workout.workout.arm
+                            .round2" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/arm/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
                                 </ion-thumbnail>
-                                <ion-label
-                                    class="workoutTitle"
-                                    :class="{ finished: workout.status }">
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
                                     {{ workout.name }}
                                     <p>x {{ workout.amount }}</p>
                                 </ion-label>
 
-                                <ion-checkbox
-                                    @ionChange="
-                                        workout.status = !workout.status
-                                    "
-                                    slot="end"
-                                    :checked="workout.status"></ion-checkbox>
+                                <ion-checkbox @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
                             </ion-item>
                         </ion-list>
                     </ion-accordion>
                 </ion-accordion-group>
 
-                <h1 v-else-if="$route.params.id == 'chest'">Chest yo</h1>
-                <h1 v-else>Wtf man</h1>
+                <ion-accordion-group :value="['round1', 'round2']" class="ion-margin-bottom"
+                    v-else-if="$route.params.id == 'body'">
+                    <ion-accordion value="round1">
+                        <ion-item slot="header">
+                            <ion-label>Round 1</ion-label>
+                        </ion-item>
+                        <ion-list slot="content">
+                            <ion-item v-for="workout in data.workout.workout.body.round1" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/body/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
+                                </ion-thumbnail>
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
+                                    {{ workout.name }}
+                                    <p>x {{ workout.amount }}</p>
+                                </ion-label>
+
+                                <ion-checkbox @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
+                            </ion-item>
+                        </ion-list>
+                    </ion-accordion>
+                    <ion-accordion value="round2">
+                        <ion-item slot="header">
+                            <ion-label>Round 2</ion-label>
+                        </ion-item>
+                        <ion-list slot="content">
+                            <ion-item v-for="workout in data.workout.workout.body
+                            .round2" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/body/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
+                                </ion-thumbnail>
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
+                                    {{ workout.name }}
+                                    <p>x {{ workout.amount }}</p>
+                                </ion-label>
+
+                                <ion-checkbox @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
+                            </ion-item>
+                        </ion-list>
+                    </ion-accordion>
+                </ion-accordion-group>
+
+                <h1 v-else>No such thing as "{{ $route.params.id }}"</h1>
             </section>
         </ion-content>
     </ion-page>
@@ -186,6 +215,7 @@ ion-thumbnail ion-img {
 ion-title {
     text-transform: capitalize;
 }
+
 .content ion-toolbar {
     --background: transparent;
     padding-top: 1rem;

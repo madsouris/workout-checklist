@@ -24,26 +24,22 @@
                 </ion-text>
                 <section class="ion-text-center ion-padding">
                     <swiper :slides-per-view="1" :pagination="true" :modules="modules">
-                        <swiper-slide class="card-wrapper">
-                            <div class="workout-card arm">
-                                <h1>Arms and shoulders focus</h1>
-                                <p>With more workouts to balance</p>
+                        <swiper-slide class="card-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
+                            <div class="workout-card">
+                                <h1>
+                                    {{ workout.name }}
+                                </h1>
+                                <p>
+                                    {{ workout.description }}
+                                </p>
                             </div>
-                            <ion-button shape="round" router-link="/arm" size="large">
-                                Let's go
-                            </ion-button>
-                        </swiper-slide>
-                        <swiper-slide class="card-wrapper">
-                            <div class="workout-card body">
-                                <h1>Chest & body focus</h1>
-                                <p>With more workouts to balance</p>
-                            </div>
-                            <ion-button shape="round" router-link="/body" size="large">
+                            <ion-button shape="round" :router-link="'/workout/' + workout.id" size="large">
                                 Let's go
                             </ion-button>
                         </swiper-slide>
                     </swiper>
                 </section>
+
                 <ion-button fill="clear" shape="round" router-link="/about">
                     <ion-icon :icon="informationCircleOutline" slot="start"></ion-icon>
                     About
@@ -118,9 +114,9 @@ export default defineComponent({
 }
 
 .workout-card {
+    background: green;
     width: 500px;
     height: 550px;
-
     margin: 0 auto;
     padding: 2rem;
     border-radius: 1rem;

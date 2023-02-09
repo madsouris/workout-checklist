@@ -12,7 +12,8 @@
     },
     "workout": {
         "arm": {
-            "name": "Arms and shoulders focus",
+            "id": "arm",
+            "name": "Arms & shoulders focus",
             "description": "With more workouts to balance",
             "round1": [
                 {
@@ -167,7 +168,8 @@
             ]
         },
         "body": {
-            "name": "Arms and shoulders focus",
+            "id": "body",
+            "name": "Chest & body focus",
             "description": "With more workouts to balance",
             "round1": [
                 {
