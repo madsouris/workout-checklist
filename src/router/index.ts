@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'About',
         component: () => import('@/views/AboutPage.vue'),
     },
+    {
+        path: '/workout/:id',
+        name: 'Workout',
+        component: () => import('@/views/WorkoutPage.vue')
+    }
 ]
 
 const router = createRouter({
