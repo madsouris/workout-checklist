@@ -5,13 +5,15 @@
                 <ion-buttons slot="start">
                     <ion-back-button></ion-back-button>
                 </ion-buttons>
-                <ion-title>Arms Workout</ion-title>
+                <ion-title> {{ $route.params.id }} Workout </ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-header collapse="condense">
                 <ion-toolbar>
-                    <ion-title size="large"> Arms Workout </ion-title>
+                    <ion-title size="large">
+                        {{ $route.params.id }} Workout
+                    </ion-title>
                 </ion-toolbar>
             </ion-header>
             <StopWatch />
@@ -21,19 +23,85 @@
                         Hint: tap on the thumbnail to see tutorials
                     </p>
                 </ion-text>
-                <h1 v-if="$route.params.id == 'arm'">
-                    Arm yo {{ data.workout.app.name }}
 
-                    <pre>
-                        {{  data.workout.workout.arm }}
-                    </pre>
-                </h1>
-                <h1 v-else-if="$route.params.id == 'chest'">
-                    Chest yo
-                </h1>
-                <h1 v-else>
-                    Wtf man
-                </h1>
+                <ion-accordion-group
+                    :value="['first', 'second']"
+                    class="ion-margin-bottom"
+                    v-if="$route.params.id == 'arm'">
+                    <ion-accordion value="first">
+                        <ion-item slot="header">
+                            <ion-label>Round 1</ion-label>
+                        </ion-item>
+                        <ion-list slot="content">
+                            <ion-item
+                                v-for="workout in data.workout.workout.arm
+                                    .round1"
+                                :key="workout.id">
+                                <ion-thumbnail
+                                    slot="start"
+                                    @click="goTo(workout.url)">
+                                    <ion-img
+                                        :src="
+                                            '/assets/img/arm/' +
+                                            workout.id +
+                                            '.jpg'
+                                        "></ion-img>
+                                </ion-thumbnail>
+                                <ion-label
+                                    class="workoutTitle"
+                                    :class="{ finished: workout.status }">
+                                    {{ workout.name }}
+                                    <p>x {{ workout.amount }}</p>
+                                </ion-label>
+
+                                <ion-checkbox
+                                    @ionChange="
+                                        workout.status = !workout.status
+                                    "
+                                    slot="end"
+                                    :checked="workout.status"></ion-checkbox>
+                            </ion-item>
+                        </ion-list>
+                    </ion-accordion>
+                    <ion-accordion value="second">
+                        <ion-item slot="header">
+                            <ion-label>Round 2</ion-label>
+                        </ion-item>
+                        <ion-list slot="content">
+                            <ion-item
+                                v-for="workout in data.workout.workout.arm
+                                    .round2"
+                                :key="workout.id">
+                                <ion-thumbnail
+                                    slot="start"
+                                    @click="goTo(workout.url)">
+                                    <ion-img
+                                        :src="
+                                            '/assets/img/arm/' +
+                                            workout.id +
+                                            '.jpg'
+                                        "></ion-img>
+                                </ion-thumbnail>
+                                <ion-label
+                                    class="workoutTitle"
+                                    :class="{ finished: workout.status }">
+                                    {{ workout.name }}
+                                    <p>x {{ workout.amount }}</p>
+                                </ion-label>
+
+                                <ion-checkbox
+                                    @ionChange="
+                                        workout.status = !workout.status
+                                    "
+                                    slot="end"
+                                    :checked="workout.status"></ion-checkbox>
+                            </ion-item>
+                        </ion-list>
+                    </ion-accordion>
+                </ion-accordion-group>
+
+                <h1 v-else-if="$route.params.id == 'chest'">Chest yo</h1>
+                <h1 v-else>Wtf man</h1>
             </section>
         </ion-content>
     </ion-page>
@@ -49,7 +117,16 @@ import {
     IonButtons,
     IonBackButton,
     IonTitle,
-    IonContent,IonText
+    IonContent,
+    IonText,
+    IonAccordionGroup,
+    IonAccordion,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonThumbnail,
+    IonImg,
+    IonCheckbox,
 } from '@ionic/vue'
 
 import { useDataStore } from '@/stores/data'
@@ -63,19 +140,27 @@ export default defineComponent({
         IonButtons,
         IonBackButton,
         IonTitle,
-        IonContent,IonText,
+        IonContent,
+        IonText,
+        IonAccordionGroup,
+        IonAccordion,
+        IonItem,
+        IonLabel,
+        IonList,
+        IonThumbnail,
+        IonImg,
+        IonCheckbox,
         StopWatch,
     },
     setup() {
-        const data:any = useDataStore()
+        const data: any = useDataStore()
 
         return {
-            data
+            data,
         }
     },
     data() {
-        return {
-        }
+        return {}
     },
     methods: {
         goTo(link: string) {
@@ -98,6 +183,9 @@ ion-thumbnail ion-img {
     aspect-ratio: 1 / 1;
 }
 
+ion-title {
+    text-transform: capitalize;
+}
 .content ion-toolbar {
     --background: transparent;
     padding-top: 1rem;
