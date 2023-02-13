@@ -31,7 +31,7 @@
                             <ion-label>Round 1</ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item v-for="workout in data.workout.workout.arm.round1" :key="workout.id">
+                            <ion-item v-for="workout in path.round1" :key="workout.id">
                                 <ion-thumbnail slot="start" @click="goTo(workout.url)">
                                     <ion-img :src="
                                         '/assets/img/arm/' +
@@ -55,8 +55,7 @@
                             <ion-label>Round 2</ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item v-for="workout in data.workout.workout.arm
-                            .round2" :key="workout.id">
+                            <ion-item v-for="workout in path.round2" :key="workout.id">
                                 <ion-thumbnail slot="start" @click="goTo(workout.url)">
                                     <ion-img :src="
                                         '/assets/img/arm/' +
@@ -159,6 +158,7 @@ import {
 } from '@ionic/vue'
 
 import { useDataStore } from '@/stores/data'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
     name: 'ArmWorkoutPage',
@@ -183,9 +183,15 @@ export default defineComponent({
     },
     setup() {
         const data: any = useDataStore()
+        const route = useRoute()
+
+        let path: any = "data.workout.workout." + route.params.id
+
+        console.log(path)
 
         return {
             data,
+            path
         }
     },
     data() {
