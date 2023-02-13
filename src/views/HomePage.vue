@@ -25,7 +25,8 @@
                 <section class="ion-text-center ion-padding">
                     <swiper :slides-per-view="1" :pagination="true" :modules="modules">
                         <swiper-slide class="card-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
-                            <div class="workout-card">
+                            <div class="workout-card"
+                                :style="'background-image: url(\'./assets/img/' + workout.id + '.jpg'">
                                 <h1>
                                     {{ workout.name }}
                                 </h1>
@@ -114,7 +115,10 @@ export default defineComponent({
 }
 
 .workout-card {
-    background: green;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     width: 500px;
     height: 550px;
     margin: 0 auto;
@@ -129,20 +133,6 @@ export default defineComponent({
     box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
     transform: rotate(1deg);
     cursor: grab;
-}
-
-.arm {
-    background: url('../../public/assets/img/arm.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-.body {
-    background: url('../../public/assets/img/body.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
 }
 
 .workout-card h1,
