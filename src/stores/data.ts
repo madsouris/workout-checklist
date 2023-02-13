@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 //import JSON data
-import workouts from '../data-better.json'
+import workouts from '../data.json'
 
 // You can name the return value of `defineStore()` anything you want,
 // but it's best to use the name of the store and surround it with `use`

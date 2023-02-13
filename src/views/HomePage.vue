@@ -33,10 +33,11 @@
                                 <p>
                                     {{ workout.description }}
                                 </p>
+                                <ion-button shape="round" :router-link="'/workout/' + workout.id" size="large">
+                                    Let's go
+                                </ion-button>
                             </div>
-                            <ion-button shape="round" :router-link="'/workout/' + workout.id" size="large">
-                                Let's go
-                            </ion-button>
+
                         </swiper-slide>
                     </swiper>
                 </section>

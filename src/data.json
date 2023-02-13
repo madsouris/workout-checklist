@@ -1,6 +1,20 @@
 {
-    "arm": [
-        {
+    "app": {
+        "name": "Workout Checklist",
+        "repo": "https://github.com/madsouris/workout-checklist",
+        "author": {
+            "name": "madsouris",
+            "instagram": "https://instagram.com/madsouris",
+            "github": "https://github.com/madsouris",
+            "twitter": "https://twitter.com/madsouris",
+            "website": "https://vannrith.com"
+        }
+    },
+    "workout": {
+        "arm": {
+            "id": "arm",
+            "name": "Arms & shoulders focus",
+            "description": "With more workouts to balance",
             "round1": [
                 {
                     "id": 1,
@@ -86,9 +100,7 @@
                     "amount": 1,
                     "status": false
                 }
-            ]
-        },
-        {
+            ],
             "round2": [
                 {
                     "id": 1,
@@ -154,10 +166,11 @@
                     "status": false
                 }
             ]
-        }
-    ],
-    "body": [
-        {
+        },
+        "body": {
+            "id": "body",
+            "name": "Chest & body focus",
+            "description": "With more workouts to balance",
             "round1": [
                 {
                     "id": 1,
@@ -236,9 +249,7 @@
                     "amount": 1,
                     "status": false
                 }
-            ]
-        },
-        {
+            ],
             "round2": [
                 {
                     "id": 2,
@@ -291,5 +302,5 @@
                 }
             ]
         }
-    ]
+    }
 }
