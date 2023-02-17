@@ -4,8 +4,9 @@
             <ion-toolbar>
                 <ion-title>{{ data.workout.app.name }}</ion-title>
                 <ion-buttons slot="primary">
-                    <ion-button color="dark" @click="
-                    goTo(data.workout.app.repo)">
+                    <ion-button
+                        color="dark"
+                        @click="goTo(data.workout.app.repo)">
                         <ion-icon :icon="logoGithub"> </ion-icon>
                     </ion-button>
                 </ion-buttons>
@@ -13,39 +14,82 @@
         </ion-header>
 
         <ion-content :fullscreen="true">
-            <section class="content ion-text-center">
-                <ion-text class="ion-margin-top">
-                    <h1>Welcome back dude</h1>
-                </ion-text>
-                <ion-text color="medium">
-                    <p class="ion-no-margin">
-                        What are you planning to work on today?
-                    </p>
-                </ion-text>
-                <section class="ion-text-center ion-padding">
-                    <swiper :slides-per-view="1" :pagination="true" :modules="modules">
-                        <swiper-slide class="card-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
-                            <div class="workout-card"
-                                :style="'background-image: url(\'./assets/img/' + workout.id + '.jpg'">
-                                <h1>
-                                    {{ workout.name }}
-                                </h1>
-                                <p>
-                                    {{ workout.description }}
-                                </p>
-                                <ion-button shape="round" :router-link="'/workout/' + workout.id" size="large">
-                                    Let's go
-                                </ion-button>
-                            </div>
+            <InstallBanner />
+            <section class="content">
+                <section class="welcome">
+                    <ion-text>
+                        <h1 class="title">Welcome back</h1>
+                    </ion-text>
+                    <ion-text color="medium">
+                        <p class="ion-no-margin">
+                            Muscle has expiry date, use it or lose it. Pick a
+                            workout and sweat it out. You only need a pair of
+                            dumbbells, bench is optional.
+                        </p>
+                    </ion-text>
+                </section>
 
+                <section class="ion-padding ion-margin-bottom">
+                    <ion-text color="dark">
+                        <p>
+                            <small> Swipe for more → </small>
+                        </p>
+                    </ion-text>
+                    <swiper :slides-per-view="'auto'" :space-between="16">
+                        <swiper-slide
+                            class="slide-wrapper"
+                            v-for="workout in data.workout.workout"
+                            :key="workout.id">
+                            <div
+                                @click="
+                                    () => router.push('/workout/' + workout.id)
+                                "
+                                class="workout-card"
+                                :style="
+                                    'background-image: url(\'./assets/img/' +
+                                    workout.id +
+                                    '.jpg'
+                                ">
+                                <ion-text>
+                                    <h4 class="ion-no-margin">
+                                        {{ workout.name }}
+                                    </h4>
+                                </ion-text>
+                                <ion-text color="medium">
+                                    <p class="ion-no-margin">
+                                        <small>
+                                            {{ workout.description }}
+                                        </small>
+                                    </p>
+                                </ion-text>
+                            </div>
                         </swiper-slide>
                     </swiper>
                 </section>
 
-                <ion-button fill="clear" shape="round" router-link="/about">
-                    <ion-icon :icon="informationCircleOutline" slot="start"></ion-icon>
-                    About
-                </ion-button>
+                <ul class="footer-link">
+                    <li>More</li>
+                    <li>
+                        <a @click="() => router.push('/about')">
+                            <h2>About this app</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="() => router.push('/about')">
+                            <h2>Source code</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="() => router.push('/about')">
+                            <h2>Privacy</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="() => router.push('/about')">
+                            <h2>Install</h2>
+                        </a>
+                    </li>
+                </ul>
             </section>
         </ion-content>
     </ion-page>
@@ -65,13 +109,15 @@ import {
 } from '@ionic/vue'
 import { informationCircleOutline, logoGithub } from 'ionicons/icons'
 import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 
-import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { useDataStore } from '@/stores/data'
+
+import InstallBanner from './components/InstallBanner.vue'
 
 export default defineComponent({
     name: 'HomePage',
@@ -87,14 +133,16 @@ export default defineComponent({
         IonButton,
         IonIcon,
         IonButtons,
+        InstallBanner,
     },
     setup() {
         const data: any = useDataStore()
+        const router = useRouter()
         return {
             informationCircleOutline,
             logoGithub,
-            modules: [Pagination],
-            data
+            data,
+            router,
         }
     },
     methods: {
@@ -106,46 +154,55 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+.title {
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
 }
 
+.welcome {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    width: 50%;
+    padding: 1rem;
+}
+.slide-wrapper {
+    display: inline-block;
+    width: auto;
+}
 .workout-card {
-
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     width: 500px;
-    height: 550px;
-    margin: 0 auto;
-    padding: 2rem;
+    height: 500px;
+    padding: 1rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 1rem;
-    align-items: center;
-    text-align: center;
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
-    transform: rotate(1deg);
-    cursor: grab;
+    cursor: pointer;
 }
 
-.workout-card h1,
-.workout-card p {
-    color: white;
-    margin: 0;
+.footer-link {
+    list-style-type: none;
+    margin: 0 0 2rem 0;
+    padding: 0 0 0 1rem;
+}
+
+.footer-link li a {
+    cursor: pointer;
+    color: var(--ion-color-dark);
 }
 
 @media screen and (max-width: 500px) {
     .workout-card {
-        width: 280px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .welcome {
+        width: 100%;
     }
 }
 </style>
