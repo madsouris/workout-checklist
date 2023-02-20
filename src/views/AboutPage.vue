@@ -62,7 +62,7 @@
                 <ion-text color="medium">
                     <p>You can find me on:</p>
                 </ion-text>
-                <ion-button shape="round" color="primary" @click="goTo(data.workout.app.author.github)">
+                <ion-button shape="round" color="light" @click="goTo(data.workout.app.author.github)">
                     <ion-icon :icon="logoGithub" slot="start"></ion-icon>
                     Github
                 </ion-button>
@@ -150,6 +150,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

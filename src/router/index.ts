@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/AboutPage.vue'),
     },
     {
+        path: '/privacy',
+        name: 'Privacy',
+        component: () => import('@/views/PrivacyPage.vue'),
+    },
+    {
         path: '/workout',
         redirect: '/',
     },

@@ -29,20 +29,14 @@
                         </p>
                     </ion-text>
                     <swiper :slides-per-view="'auto'" :space-between="16">
-                        <swiper-slide
-                            class="slide-wrapper"
-                            v-for="workout in data.workout.workout"
-                            :key="workout.id">
-                            <div
-                                @click="
-                                    () => router.push('/workout/' + workout.id)
-                                "
-                                class="workout-card"
-                                :style="
-                                    'background-image: url(\'./assets/img/' +
-                                    workout.id +
-                                    '.jpg'
-                                ">
+                        <swiper-slide class="slide-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
+                            <div @click="
+                                () => router.push('/workout/' + workout.id)
+                            " class="workout-card" :style="
+    'background-image: url(\'./assets/img/' +
+    workout.id +
+    '.jpg'
+">
                                 <ion-text>
                                     <h4 class="ion-no-margin text-white">
                                         {{ workout.name }}
@@ -68,12 +62,12 @@
                         </a>
                     </li>
                     <li>
-                        <a @click="() => router.push('/about')">
+                        <a @click="goTo(data.workout.app.repo)">
                             <h2>Source code</h2>
                         </a>
                     </li>
                     <li>
-                        <a @click="() => router.push('/about')">
+                        <a @click="() => router.push('/privacy')">
                             <h2>Privacy</h2>
                         </a>
                     </li>
@@ -153,10 +147,12 @@ export default defineComponent({
     width: 50%;
     padding: 1rem;
 }
+
 .slide-wrapper {
     display: inline-block;
     width: auto;
 }
+
 .workout-card {
     background-repeat: no-repeat;
     background-size: cover;
