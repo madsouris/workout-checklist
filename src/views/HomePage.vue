@@ -3,13 +3,6 @@
         <ion-header :translucent="true">
             <ion-toolbar>
                 <ion-title>{{ data.workout.app.name }}</ion-title>
-                <ion-buttons slot="primary">
-                    <ion-button
-                        color="dark"
-                        @click="goTo(data.workout.app.repo)">
-                        <ion-icon :icon="logoGithub"> </ion-icon>
-                    </ion-button>
-                </ion-buttons>
             </ion-toolbar>
         </ion-header>
 
@@ -51,7 +44,7 @@
                                     '.jpg'
                                 ">
                                 <ion-text>
-                                    <h4 class="ion-no-margin">
+                                    <h4 class="ion-no-margin text-white">
                                         {{ workout.name }}
                                     </h4>
                                 </ion-text>
@@ -103,9 +96,6 @@ import {
     IonContent,
     IonPage,
     IonText,
-    IonButton,
-    IonIcon,
-    IonButtons,
 } from '@ionic/vue'
 import { informationCircleOutline, logoGithub } from 'ionicons/icons'
 import { defineComponent } from 'vue'
@@ -130,9 +120,6 @@ export default defineComponent({
         IonTitle,
         Swiper,
         SwiperSlide,
-        IonButton,
-        IonIcon,
-        IonButtons,
         InstallBanner,
     },
     setup() {
