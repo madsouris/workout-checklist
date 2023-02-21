@@ -49,6 +49,7 @@
                                 </ion-label>
 
                                 <ion-checkbox
+                                    color="danger"
                                     @ionChange="
                                         workout.status = !workout.status
                                     "
@@ -85,6 +86,7 @@
                                 </ion-label>
 
                                 <ion-checkbox
+                                    color="danger"
                                     @ionChange="
                                         workout.status = !workout.status
                                     "
@@ -219,9 +221,9 @@ ion-title {
 }
 
 .finished {
-    color: var(--ion-color-primary);
+    color: var(--ion-color-danger);
     text-decoration: line-through;
-    text-decoration-color: var(--ion-color-primary);
+    text-decoration-color: var(--ion-color-danger);
 }
 
 .workoutTitle {

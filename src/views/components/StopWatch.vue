@@ -8,7 +8,7 @@
         ">
         <h1 v-if="!stopwatch.stopwatch.isRunning">Just do it!</h1>
         <h1 v-else>Keep going!</h1>
-        <section>
+        <section class="timer-time">
             <span class="time">
                 {{ stopwatch.stopwatch.hours
                 }}<span class="time-indicator">Hour</span>
@@ -25,7 +25,7 @@
         <div>
             <button
                 v-if="!stopwatch.stopwatch.isRunning"
-                @click="stopwatch.start"
+                @click="start()"
                 class="btn play">
                 <ion-icon :icon="play" slot="icon-only"></ion-icon>
             </button>
@@ -36,33 +36,88 @@
                 <ion-icon slot="icon-only" :icon="pause"></ion-icon>
             </button>
             <button
-                v-if="stopwatch.stopwatch.isRunning"
-                @click="setOpen(true)"
-                class="btn stop">
+                id="stop-workout"
+                @click="stopwatch.pause()"
+                class="btn stop"
+                :disabled="isStarted == false">
                 <ion-icon :icon="stop" slot="icon-only"></ion-icon>
             </button>
-            <ion-alert
-                :is-open="isOpenRef"
-                header="Finish"
-                sub-header="You can do more you know?"
-                message="Congratulations by the way!"
-                :buttons="['Finish']"
-                @didDismiss="setOpen(false), backHome()"></ion-alert>
+
+            <ion-modal
+                ref="modal"
+                trigger="stop-workout"
+                can-dismiss="true"
+                :initial-breakpoint="0.5"
+                :breakpoints="[0, 0.5, 0.75, 0.9]">
+                <ion-header>
+                    <ion-toolbar>
+                        <ion-title>Are you finished?</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+                <ion-content class="ion-padding ion-text-center">
+                    <h2 class="ion-margin-bottom capitalize text-black">
+                        {{ $route.params.id }} Workout
+                    </h2>
+
+                    <section class="timer-time">
+                        <span class="time">
+                            {{ stopwatch.stopwatch.hours
+                            }}<span class="time-indicator">Hour</span>
+                        </span>
+                        <span class="time">
+                            {{ stopwatch.stopwatch.minutes
+                            }}<span class="time-indicator">Minute</span>
+                        </span>
+                        <span class="time">
+                            {{ stopwatch.stopwatch.seconds
+                            }}<span class="time-indicator">Second</span>
+                        </span>
+                    </section>
+
+                    <p class="text-black">
+                        You did {{ stopwatch.stopwatch.hours }}hr
+                        {{ stopwatch.stopwatch.minutes }}min of
+                        <span class="capitalize"
+                            >{{ $route.params.id }} workout</span
+                        >. Don’t forget to stretch and rest a little bit before
+                        a shower.
+                    </p>
+
+                    <ion-button fill="clear" @click="backHome()">
+                        Share
+                    </ion-button>
+
+                    <ion-button fill="clear" @click="backHome()">
+                        Finish
+                    </ion-button>
+                </ion-content>
+            </ion-modal>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { IonIcon, IonAlert } from '@ionic/vue'
+import {
+    IonIcon,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButton,
+    IonContent,
+    IonModal,
+} from '@ionic/vue'
 import { play, pause, stop } from 'ionicons/icons'
 
 import { useStopwatchStore } from '@/stores/stopwatch'
 
 const stopwatch = useStopwatchStore()
 
-const isOpenRef = ref(false)
-const setOpen = (state: boolean) => (isOpenRef.value = state)
+let isStarted = false
+
+function start() {
+    stopwatch.start()
+    isStarted = true
+}
 
 function backHome() {
     const url = new URL('/', window.location.origin)
@@ -127,7 +182,7 @@ function backHome() {
     gap: 0.5rem;
 }
 
-.timer section {
+.timer-time {
     font-size: 3rem;
     font-weight: 600;
     margin: 0;
@@ -137,7 +192,7 @@ function backHome() {
     gap: 0.5rem;
 }
 
-.timer section span.time {
+.timer-time span.time {
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.08);
@@ -151,5 +206,16 @@ function backHome() {
     font-weight: 400;
     margin-left: 0.2rem;
     opacity: 0.5;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+ion-modal ion-toolbar,
+ion-modal ion-content {
+    --background: var(--ion-color-danger);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --color: black;
 }
 </style>

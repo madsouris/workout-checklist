@@ -15,29 +15,29 @@
                 </ion-toolbar>
             </ion-header>
             <section class="content ion-padding">
-                <ion-text>
+                <ion-text color="medium">
                     <p>
-                        This website (workout.vannrith.com) does not use any analytics software and neither third-party
-                        scripts. I don't know
-                        who you are, where you're coming from and I don't want to.
+                        This website (workout.vannrith.com) does not use any
+                        analytics software and neither third-party scripts. I
+                        don't know who you are, where you're coming from and I
+                        don't want to.
                     </p>
                 </ion-text>
                 <ion-text>
                     <h1>What I collect</h1>
                 </ion-text>
                 <ion-text color="medium">
-                    <p>
-                        Nothing.
-                    </p>
+                    <p>Nothing.</p>
                 </ion-text>
                 <ion-text>
                     <h1>Outside links</h1>
                 </ion-text>
                 <ion-text color="medium">
                     <p>
-                        When you leave Workout Checklist via my links, I cannot vouch for the tracking or cookies used
-                        by sites I recommend,
-                        however I recommend you use an ads blocker such as uBlock Origin.
+                        When you leave Workout Checklist via my links, I cannot
+                        vouch for the tracking or cookies used by sites I
+                        recommend, however I recommend you use an ads blocker
+                        such as uBlock Origin.
                     </p>
                 </ion-text>
                 <ion-text>
@@ -45,9 +45,13 @@
                 </ion-text>
                 <ion-text color="medium">
                     <p>
-                        Netlify has their own privacy policy, please read it <a href="https://www.netlify.com/privacy"
+                        Netlify has their own privacy policy, please read it
+                        <a
+                            href="https://www.netlify.com/privacy"
                             target="_ban
-                        ">Here</a>
+                        "
+                            >Here</a
+                        >
                     </p>
                 </ion-text>
             </section>
@@ -97,12 +101,10 @@ export default defineComponent({
         console.log(`load data took ${t1 - t0} milliseconds.`)
 
         return {
-            data
+            data,
         }
     },
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
