@@ -7,7 +7,6 @@
         </ion-header>
 
         <ion-content :fullscreen="true">
-            <InstallBanner />
             <section class="content">
                 <section class="welcome">
                     <ion-text>
@@ -29,14 +28,20 @@
                         </p>
                     </ion-text>
                     <swiper :slides-per-view="'auto'" :space-between="16">
-                        <swiper-slide class="slide-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
-                            <div @click="
-                                () => router.push('/workout/' + workout.id)
-                            " class="workout-card" :style="
-    'background-image: url(\'./assets/img/' +
-    workout.id +
-    '.jpg'
-">
+                        <swiper-slide
+                            class="slide-wrapper"
+                            v-for="workout in data.workout.workout"
+                            :key="workout.id">
+                            <div
+                                @click="
+                                    () => router.push('/workout/' + workout.id)
+                                "
+                                class="workout-card"
+                                :style="
+                                    'background-image: url(\'./assets/img/' +
+                                    workout.id +
+                                    '.jpg'
+                                ">
                                 <ion-text>
                                     <h4 class="ion-no-margin text-white">
                                         {{ workout.name }}
@@ -72,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a @click="() => router.push('/about')">
+                        <a @click="installModal()">
                             <h2>Install</h2>
                         </a>
                     </li>
@@ -90,6 +95,7 @@ import {
     IonContent,
     IonPage,
     IonText,
+    modalController,
 } from '@ionic/vue'
 import { informationCircleOutline, logoGithub } from 'ionicons/icons'
 import { defineComponent } from 'vue'
@@ -101,7 +107,7 @@ import 'swiper/css/pagination'
 
 import { useDataStore } from '@/stores/data'
 
-import InstallBanner from './components/InstallBanner.vue'
+import InstallInstruction from './components/InstallInstruction.vue'
 
 export default defineComponent({
     name: 'HomePage',
@@ -114,11 +120,11 @@ export default defineComponent({
         IonTitle,
         Swiper,
         SwiperSlide,
-        InstallBanner,
     },
     setup() {
         const data: any = useDataStore()
         const router = useRouter()
+
         return {
             informationCircleOutline,
             logoGithub,
@@ -129,6 +135,15 @@ export default defineComponent({
     methods: {
         goTo(link: string) {
             window.open(link)
+        },
+
+        async installModal() {
+            const modal = await modalController.create({
+                component: InstallInstruction,
+                breakpoints: [0, 0.25, 0.5, 0.75, 1],
+                initialBreakpoint: 0.5,
+            })
+            modal.present()
         },
     },
 })
