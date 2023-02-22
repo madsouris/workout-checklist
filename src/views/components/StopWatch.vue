@@ -83,11 +83,11 @@
                         a shower.
                     </p>
 
-                    <ion-button fill="clear" @click="backHome()">
+                    <!-- <ion-button fill="clear" @click="backHome()">
                         Share
-                    </ion-button>
+                    </ion-button> -->
 
-                    <ion-button fill="clear" @click="backHome()">
+                    <ion-button fill="outline" @click="backHome()">
                         Finish
                     </ion-button>
                 </ion-content>
