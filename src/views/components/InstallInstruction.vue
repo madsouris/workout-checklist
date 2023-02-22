@@ -1,11 +1,10 @@
 <template>
     <ion-header>
         <ion-toolbar>
-            <ion-title>Are you finished?</ion-title>
+            <ion-title>How to install</ion-title>
         </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding ion-text-center">
-        <h1>Here is how to install</h1>
         <p>1. While on the site, hit share button</p>
         <ion-img src="@/../assets/img/install1.jpeg" alt="figure 1"></ion-img>
         <p>2. Hit add to homescreen</p>
