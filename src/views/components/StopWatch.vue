@@ -1,11 +1,9 @@
 <template>
-    <section
-        class="timer"
-        :style="
-            stopwatch.stopwatch.isRunning
-                ? 'background: var(--ion-color-danger)'
-                : 'background: #f5f5f5'
-        ">
+    <section class="timer" :style="
+        stopwatch.stopwatch.isRunning
+            ? 'background: var(--ion-color-danger)'
+            : 'background: #f5f5f5'
+    ">
         <h1 v-if="!stopwatch.stopwatch.isRunning">Just do it!</h1>
         <h1 v-else>Keep going!</h1>
         <section class="timer-time">
@@ -23,31 +21,17 @@
             </span>
         </section>
         <div>
-            <button
-                v-if="!stopwatch.stopwatch.isRunning"
-                @click="start()"
-                class="btn play">
+            <button v-if="!stopwatch.stopwatch.isRunning" @click="start()" class="btn play">
                 <ion-icon :icon="play" slot="icon-only"></ion-icon>
             </button>
-            <button
-                v-if="stopwatch.stopwatch.isRunning"
-                @click="stopwatch.pause"
-                class="btn pause">
+            <button v-if="stopwatch.stopwatch.isRunning" @click="stopwatch.pause" class="btn pause">
                 <ion-icon slot="icon-only" :icon="pause"></ion-icon>
             </button>
-            <button
-                id="stop-workout"
-                @click="stopwatch.pause()"
-                class="btn stop"
-                :disabled="isStarted == false">
+            <button id="stop-workout" @click="stopwatch.pause()" class="btn stop" :disabled="isStarted == false">
                 <ion-icon :icon="stop" slot="icon-only"></ion-icon>
             </button>
 
-            <ion-modal
-                ref="modal"
-                trigger="stop-workout"
-                can-dismiss="true"
-                :initial-breakpoint="0.5"
+            <ion-modal ref="modal" trigger="stop-workout" can-dismiss="true" :initial-breakpoint="0.5"
                 :breakpoints="[0, 0.5, 0.75, 0.9]">
                 <ion-header>
                     <ion-toolbar>
@@ -75,11 +59,10 @@
                     </section>
 
                     <p class="text-black">
-                        You did {{ stopwatch.stopwatch.hours }}hr
-                        {{ stopwatch.stopwatch.minutes }}min of
-                        <span class="capitalize"
-                            >{{ $route.params.id }} workout</span
-                        >. Don’t forget to stretch and rest a little bit before
+                        You did <span class="text-mono">{{ stopwatch.stopwatch.hours }}hr
+                            {{ stopwatch.stopwatch.minutes }}min</span> of
+                        <span class="capitalize">{{ $route.params.id }} workout</span>. Don’t forget to stretch and rest a
+                        little bit before
                         a shower.
                     </p>
 
@@ -87,9 +70,9 @@
                         Share
                     </ion-button> -->
 
-                    <ion-button fill="outline" @click="backHome()">
+                    <button class="finish-button" @click="backHome()">
                         Finish
-                    </ion-button>
+                    </button>
                 </ion-content>
             </ion-modal>
         </div>
@@ -149,6 +132,7 @@ function backHome() {
     background: rgba(0, 0, 0, 0.08);
     color: black;
 }
+
 .timer {
     border-radius: 1rem;
     padding: 2rem 1rem;
@@ -210,6 +194,20 @@ function backHome() {
 
 .capitalize {
     text-transform: capitalize;
+}
+
+.text-mono {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.finish-button {
+    color: var(--ion-color-danger);
+    background: black;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
 }
 
 ion-modal ion-toolbar,
