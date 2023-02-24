@@ -85,7 +85,6 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonButton,
     IonContent,
     IonModal,
 } from '@ionic/vue'

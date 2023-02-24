@@ -301,6 +301,141 @@
                     "status": false
                 }
             ]
+        },
+        "core": {
+            "id": "core",
+            "name": "Core focus",
+            "description": "Short simple exercises for your core",
+            "round1": [
+                {
+                    "id": 1,
+                    "name": "Core stretch",
+                    "url": "",
+                    "amount": 1,
+                    "status": false
+                },
+                {
+                    "id": 2,
+                    "name": "Boxing bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "Sit up",
+                    "url": "",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 4,
+                    "name": "Plank saw",
+                    "url": "",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 5,
+                    "name": "Plank 30s",
+                    "url": "",
+                    "amount": 1,
+                    "status": false
+                },
+                {
+                    "id": 6,
+                    "name": "High plank shoulder tap",
+                    "url": "",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 7,
+                    "name": "Ankle touch",
+                    "url": "",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 8,
+                    "name": "Reverse crunch",
+                    "url": "",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 9,
+                    "name": "Flutter kick",
+                    "url": "",
+                    "amount": 20,
+                    "status": false
+                }
+            ],
+            "round2": [
+                {
+                    "id": 5,
+                    "name": "Plank 30s",
+                    "url": "",
+                    "amount": 1,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "Sit up",
+                    "url": "",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 4,
+                    "name": "Plank saw",
+                    "url": "",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 10,
+                    "name": "Bicycle crunch",
+                    "url": "",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 8,
+                    "name": "Reverse crunch",
+                    "url": "",
+                    "amount": 15,
+                    "status": false
+                },
+                {
+                    "id": 9,
+                    "name": "Flutter kick",
+                    "url": "",
+                    "amount": 20,
+                    "status": false
+                },
+                {
+                    "id": 3,
+                    "name": "Sit up",
+                    "url": "",
+                    "amount": 10,
+                    "status": false
+                },
+                {
+                    "id": 2,
+                    "name": "Boxing bounce 3mn",
+                    "url": "https://www.youtube.com/watch?v=0U6MAz3T--4",
+                    "amount": 1,
+                    "status": false
+                },
+                {
+                    "id": 1,
+                    "name": "Core stretch",
+                    "url": "",
+                    "amount": 1,
+                    "status": false
+                }
+            ]
         }
     }
 }

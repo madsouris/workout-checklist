@@ -18,43 +18,30 @@
                     </p>
                 </ion-text>
 
-                <ion-accordion-group
-                    :value="['round1', 'round2']"
-                    class="ion-margin-bottom">
+                <ion-accordion-group :value="['round1', 'round2']" class="ion-margin-bottom">
                     <ion-accordion value="round1">
                         <ion-item slot="header">
                             <ion-label><b>Round 1</b></ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item
-                                v-for="workout in workoutPath.round1"
-                                :key="workout.id">
-                                <ion-thumbnail
-                                    slot="start"
-                                    @click="goTo(workout.url)">
-                                    <ion-img
-                                        :src="
-                                            '/assets/img/' +
-                                            path +
-                                            '/' +
-                                            workout.id +
-                                            '.jpg'
-                                        "></ion-img>
+                            <ion-item v-for="workout in workoutPath.round1" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/' +
+                                        path +
+                                        '/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
                                 </ion-thumbnail>
-                                <ion-label
-                                    class="workoutTitle"
-                                    :class="{ finished: workout.status }">
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
                                     {{ workout.name }}
                                     <p>x {{ workout.amount }}</p>
                                 </ion-label>
 
-                                <ion-checkbox
-                                    color="danger"
-                                    @ionChange="
-                                        workout.status = !workout.status
-                                    "
-                                    slot="end"
-                                    :checked="workout.status"></ion-checkbox>
+                                <ion-checkbox color="danger" @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
                             </ion-item>
                         </ion-list>
                     </ion-accordion>
@@ -63,35 +50,24 @@
                             <ion-label><b>Round 2</b></ion-label>
                         </ion-item>
                         <ion-list slot="content">
-                            <ion-item
-                                v-for="workout in workoutPath.round2"
-                                :key="workout.id">
-                                <ion-thumbnail
-                                    slot="start"
-                                    @click="goTo(workout.url)">
-                                    <ion-img
-                                        :src="
-                                            '/assets/img/' +
-                                            path +
-                                            '/' +
-                                            workout.id +
-                                            '.jpg'
-                                        "></ion-img>
+                            <ion-item v-for="workout in workoutPath.round2" :key="workout.id">
+                                <ion-thumbnail slot="start" @click="goTo(workout.url)">
+                                    <ion-img :src="
+                                        '/assets/img/' +
+                                        path +
+                                        '/' +
+                                        workout.id +
+                                        '.jpg'
+                                    "></ion-img>
                                 </ion-thumbnail>
-                                <ion-label
-                                    class="workoutTitle"
-                                    :class="{ finished: workout.status }">
+                                <ion-label class="workoutTitle" :class="{ finished: workout.status }">
                                     {{ workout.name }}
                                     <p>x {{ workout.amount }}</p>
                                 </ion-label>
 
-                                <ion-checkbox
-                                    color="danger"
-                                    @ionChange="
-                                        workout.status = !workout.status
-                                    "
-                                    slot="end"
-                                    :checked="workout.status"></ion-checkbox>
+                                <ion-checkbox color="danger" @ionChange="
+                                    workout.status = !workout.status
+                                " slot="end" :checked="workout.status"></ion-checkbox>
                             </ion-item>
                         </ion-list>
                     </ion-accordion>
@@ -103,7 +79,7 @@
                     You got the wrong link, please go back home and select a
                     workout to start
                 </p>
-                <ion-button router-link="/" size="large" shape="round">
+                <ion-button fill="outline" router-link="/" size="large" shape="round">
                     Home
                 </ion-button>
             </div>
@@ -174,6 +150,9 @@ export default defineComponent({
                 break
             case 'body':
                 workoutPath = data.workout.workout.body
+                break
+            case 'core':
+                workoutPath = data.workout.workout.core
                 break
 
             default:
