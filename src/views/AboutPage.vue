@@ -16,15 +16,14 @@
             </ion-header>
             <section class="content ion-padding">
                 <ion-text>
-                    <h1>About this app</h1>
+                    <h1>About {{ data.workout.app.name }}</h1>
                 </ion-text>
                 <ion-text color="medium">
                     <p>
                         This app was created for personal workout routines by
                         me,
-                        <a href="//github.com/madsouris" target="blank">
-                            @madsouris </a
-                        >. This is still an early development, as I am still
+                        <a :href="'//' + data.workout.app.author.github" target="blank">
+                            @madsouris </a>. This is still an early development, as I am still
                         learning Javascript, Vue and Ionic framework.
                     </p>
                     <p>
@@ -63,34 +62,19 @@
                 <ion-text color="medium">
                     <p>You can find me on:</p>
                 </ion-text>
-                <ion-button
-                    shape="round"
-                    color="primary"
-                    @click="goTo('https://github.com/madsouris')">
+                <ion-button shape="round" color="light" @click="goTo(data.workout.app.author.github)">
                     <ion-icon :icon="logoGithub" slot="start"></ion-icon>
                     Github
                 </ion-button>
-                <ion-button
-                    color="dark"
-                    shape="round"
-                    fill="clear"
-                    @click="goTo('https://instagram.com/madsouris')">
+                <ion-button color="dark" shape="round" fill="clear" @click="goTo(data.workout.app.author.instagram)">
                     <ion-icon :icon="logoInstagram" slot="start"></ion-icon>
                     Instagram
                 </ion-button>
-                <ion-button
-                    shape="round"
-                    color="dark"
-                    fill="clear"
-                    @click="goTo('https://twitter.com/madsouris')">
+                <ion-button shape="round" color="dark" fill="clear" @click="goTo(data.workout.app.author.twitter)">
                     <ion-icon :icon="logoTwitter" slot="start"></ion-icon>
                     Twitter
                 </ion-button>
-                <ion-button
-                    fill="clear"
-                    color="dark"
-                    shape="round"
-                    @click="goTo('https://vannrith.com')">
+                <ion-button fill="clear" color="dark" shape="round" @click="goTo(data.workout.app.author.website)">
                     <ion-icon :icon="globeOutline" slot="start"></ion-icon>
                     Website
                 </ion-button>
@@ -120,6 +104,8 @@ import {
     globeOutline,
 } from 'ionicons/icons'
 
+import { useDataStore } from '@/stores/data'
+
 export default defineComponent({
     name: 'AboutPage',
     components: {
@@ -143,11 +129,22 @@ export default defineComponent({
         },
     },
     setup() {
+        //calculating loading time
+        const t0 = performance.now()
+        //define data store
+        const data: any = useDataStore()
+        //test data
+        console.log(data.workout.app)
+        const t1 = performance.now()
+        //displaying loading time
+        console.log(`load data took ${t1 - t0} milliseconds.`)
+
         return {
             logoGithub,
             logoInstagram,
             logoTwitter,
             globeOutline,
+            data
         }
     },
 })

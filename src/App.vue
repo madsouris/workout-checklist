@@ -25,4 +25,12 @@ ion-content section.content {
     max-width: 850px;
     margin: 0 auto !important;
 }
+
+.text-white {
+    color: white;
+}
+
+.text-black {
+    color: black;
+}
 </style>

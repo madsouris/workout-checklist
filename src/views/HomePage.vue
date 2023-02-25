@@ -2,73 +2,80 @@
     <ion-page>
         <ion-header :translucent="true">
             <ion-toolbar>
-                <ion-title>{{ data.app.app.name }}</ion-title>
-                <ion-buttons slot="primary">
-                    <ion-button
-                        color="dark"
-                        @click="
-                            goTo(
-                                'https://github.com/madsouris/workout-checklist'
-                            )
-                        ">
-                        <ion-icon :icon="logoGithub"> </ion-icon>
-                    </ion-button>
-                </ion-buttons>
+                <ion-title>{{ data.workout.app.name }}</ion-title>
             </ion-toolbar>
         </ion-header>
 
         <ion-content :fullscreen="true">
-            <section class="content ion-text-center">
-                <ion-text class="ion-margin-top">
-                    <h1>Welcome back dude</h1>
-                </ion-text>
-                <ion-text color="medium">
-                    <p class="ion-no-margin">
-                        What are you planning to work on today? <br />
-                        {{ data.msg }} <br />
-                        {{ data.pine }}
-                        <ion-button @click="data.addPine">
-                            More pine
-                        </ion-button>
-                    </p>
-                </ion-text>
-                <section class="ion-text-center ion-padding">
-                    <swiper
-                        :slides-per-view="1"
-                        :pagination="true"
-                        :modules="modules">
-                        <swiper-slide class="card-wrapper">
-                            <div class="workout-card arm">
-                                <h1>Arms and shoulders focus</h1>
-                                <p>With more workouts to balance</p>
+            <section class="content">
+                <section class="welcome">
+                    <ion-text>
+                        <h1 class="title">Welcome back</h1>
+                    </ion-text>
+                    <ion-text color="medium">
+                        <p class="ion-no-margin">
+                            Muscle has expiry date, use it or lose it. Pick a
+                            workout and sweat it out. You only need a pair of
+                            dumbbells, bench is optional.
+                        </p>
+                    </ion-text>
+                </section>
+
+                <section class="ion-padding ion-margin-bottom">
+                    <ion-text color="dark">
+                        <p>
+                            <small> Swipe for more → </small>
+                        </p>
+                    </ion-text>
+                    <swiper :slides-per-view="'auto'" :space-between="16">
+                        <swiper-slide class="slide-wrapper" v-for="workout in data.workout.workout" :key="workout.id">
+                            <div @click="
+                                () => router.push('/workout/' + workout.id)
+                            " class="workout-card" :style="
+    'background-image: url(\'./assets/img/' +
+    workout.id +
+    '.jpg'
+">
+                                <ion-text>
+                                    <h4 class="ion-no-margin text-white">
+                                        {{ workout.name }}
+                                    </h4>
+                                </ion-text>
+                                <ion-text color="medium">
+                                    <p class="ion-no-margin">
+                                        <small>
+                                            {{ workout.description }}
+                                        </small>
+                                    </p>
+                                </ion-text>
                             </div>
-                            <ion-button
-                                shape="round"
-                                router-link="/arm"
-                                size="large">
-                                Let's go
-                            </ion-button>
-                        </swiper-slide>
-                        <swiper-slide class="card-wrapper">
-                            <div class="workout-card body">
-                                <h1>Chest & body focus</h1>
-                                <p>With more workouts to balance</p>
-                            </div>
-                            <ion-button
-                                shape="round"
-                                router-link="/body"
-                                size="large">
-                                Let's go
-                            </ion-button>
                         </swiper-slide>
                     </swiper>
                 </section>
-                <ion-button fill="clear" shape="round" router-link="/about">
-                    <ion-icon
-                        :icon="informationCircleOutline"
-                        slot="start"></ion-icon>
-                    About
-                </ion-button>
+
+                <ul class="footer-link">
+                    <li>More</li>
+                    <li>
+                        <a @click="() => router.push('/about')">
+                            <h2>About this app</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="goTo(data.workout.app.repo)">
+                            <h2>Source code</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="() => router.push('/privacy')">
+                            <h2>Privacy</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a @click="installModal()">
+                            <h2>Install</h2>
+                        </a>
+                    </li>
+                </ul>
             </section>
         </ion-content>
     </ion-page>
@@ -82,20 +89,19 @@ import {
     IonContent,
     IonPage,
     IonText,
-    IonButton,
-    IonIcon,
-    IonButtons,
+    modalController,
 } from '@ionic/vue'
 import { informationCircleOutline, logoGithub } from 'ionicons/icons'
 import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 
-import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-// add data from pinia
-import { dataStore } from '@/store/data'
+import { useDataStore } from '@/stores/data'
+
+import InstallInstruction from './components/InstallInstruction.vue'
 
 export default defineComponent({
     name: 'HomePage',
@@ -108,79 +114,87 @@ export default defineComponent({
         IonTitle,
         Swiper,
         SwiperSlide,
-        IonButton,
-        IonIcon,
-        IonButtons,
     },
     setup() {
-        const data = dataStore()
+        const data: any = useDataStore()
+        const router = useRouter()
+
         return {
             informationCircleOutline,
             logoGithub,
-            modules: [Pagination],
             data,
+            router,
         }
     },
     methods: {
         goTo(link: string) {
             window.open(link)
         },
+
+        async installModal() {
+            const modal = await modalController.create({
+                component: InstallInstruction,
+                breakpoints: [0, 0.25, 0.5, 0.75, 1],
+                initialBreakpoint: 0.5,
+            })
+            modal.present()
+        },
     },
 })
 </script>
 
 <style scoped>
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+.title {
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.welcome {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    width: 50%;
+    padding: 1rem;
+}
+
+.slide-wrapper {
+    display: inline-block;
+    width: auto;
 }
 
 .workout-card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     width: 500px;
-    height: 550px;
-
-    margin: 0 auto;
-    padding: 2rem;
+    height: 500px;
+    padding: 1rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 1rem;
-    align-items: center;
-    text-align: center;
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
-    transform: rotate(1deg);
-    cursor: grab;
+    cursor: pointer;
 }
 
-.arm {
-    background: url('../../public/assets/img/arm.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+.footer-link {
+    list-style-type: none;
+    margin: 0 0 2rem 0;
+    padding: 0 0 0 1rem;
 }
 
-.body {
-    background: url('../../public/assets/img/body.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-.workout-card h1,
-.workout-card p {
-    color: white;
-    margin: 0;
+.footer-link li a {
+    cursor: pointer;
+    color: var(--ion-color-dark);
 }
 
 @media screen and (max-width: 500px) {
     .workout-card {
-        width: 280px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .welcome {
+        width: 100%;
     }
 }
 </style>
