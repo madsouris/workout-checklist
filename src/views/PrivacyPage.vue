@@ -46,12 +46,8 @@
                 <ion-text color="medium">
                     <p>
                         Netlify has their own privacy policy, please read it
-                        <a
-                            href="https://www.netlify.com/privacy"
-                            target="_ban
-                        "
-                            >Here</a
-                        >
+                        <a href="https://www.netlify.com/privacy" target="_ban
+                            ">Here</a>
                     </p>
                 </ion-text>
             </section>
@@ -91,14 +87,14 @@ export default defineComponent({
     },
     setup() {
         //calculating loading time
-        const t0 = performance.now()
+        // const t0 = performance.now()
         //define data store
         const data: any = useDataStore()
         //test data
-        console.log(data.workout.app)
-        const t1 = performance.now()
-        //displaying loading time
-        console.log(`load data took ${t1 - t0} milliseconds.`)
+        // console.log(data.workout.app)
+        // const t1 = performance.now()
+        // //displaying loading time
+        // console.log(`load data took ${t1 - t0} milliseconds.`)
 
         return {
             data,
